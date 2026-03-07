@@ -106,6 +106,16 @@ function createHeart() {
   setTimeout(() => {
     heart.remove();
   }, duration * 1000);
+
+  function setupImageFallback() {
+  const images = document.querySelectorAll(".gallery-image");
+
+  images.forEach((img) => {
+    img.addEventListener("error", () => {
+      img.src = "assets/img/fallback.jpg";
+    });
+  });
+}
 }
 
 function burstHearts(amount = 18) {
@@ -221,3 +231,4 @@ setInterval(updateRelationshipCounter, 1000 * 60);
 
 setupRevealOnScroll();
 enablePhotoGlowEffect();
+setupImageFallback();
