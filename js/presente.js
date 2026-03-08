@@ -214,6 +214,19 @@ function enablePhotoGlowEffect() {
       photo.style.boxShadow = "";
     });
   });
+
+  function setupImageFallback() {
+  const images = document.querySelectorAll(".gallery-image");
+
+  images.forEach((img) => {
+    img.addEventListener("error", () => {
+      console.warn("Imagem não carregou:", img.src);
+      img.src = "assets/img/fallback.jpg";
+    });
+  });
+}
+
+setupImageFallback();
 }
 
 /* =========================
@@ -231,4 +244,4 @@ setInterval(updateRelationshipCounter, 1000 * 60);
 
 setupRevealOnScroll();
 enablePhotoGlowEffect();
-setupImageFallback();
+setupImageFallback(); 
